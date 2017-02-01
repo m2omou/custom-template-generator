@@ -28,7 +28,8 @@ Once the plugin has been installed, just need to add this line:
 var generator = require('custom-template-generator');
 ```
 
-## Overview
+## Usage
+
 
 ```javascript
 var generator = require('custom-template-generator');
@@ -39,12 +40,6 @@ generator({
     dest: 'src',
     componentType: 'component'
 });
-```
-
-## Usage
-
-```bash
-grunt generate:module:component:name
 ```
 
 ### Options
