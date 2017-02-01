@@ -1,6 +1,6 @@
 {
   "name": "custom-template-generator",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "generate file template",
   "main": "index.js",
   "engines": {
@@ -16,9 +16,7 @@
   ],
   "author": "Mourad Sabour",
   "license": "ISC",
-  "devDependencies": {
-    "grunt": "^0.4.5"
-  },
+  "devDependencies": {},
   "dependencies": {
     "string-template": "1.0.0",
     "mkdirp": "0.5.1",
