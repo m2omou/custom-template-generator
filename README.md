@@ -69,6 +69,68 @@ Name               | Description
 name               | Component name
 Name               | capitalized component name
 
+### Example
+
+The following template:
+
+```javascript
+// Angular imports
+import { ElementRef, Renderer } from '@angular/core';
+// Custom imports
+import { {Name}Config } from './config/{name}.config';
+
+export interface {Name}Interface<T> {
+    /*
+     * Model from the {name}.
+     */
+    model: T;
+    /*
+     * Stores config for the {name}.
+     */
+    readonly options: {Name}Config;
+    /*
+     * init
+     */
+    ngOnInit(): void;
+}
+
+```
+
+By running this function
+
+```javascript
+generator({
+    componentName: "button",
+    customTemplatesUrl: './templates/',
+    dest: 'src',
+    templateName: 'component'
+});
+```
+
+Will generate this file
+
+```javascript
+// Angular imports
+import { ElementRef, Renderer } from '@angular/core';
+// Custom imports
+import { ButtonConfig } from './config/button.config';
+
+export interface ButtonInterface<T> {
+    /*
+     * Model from the button.
+     */
+    model: T;
+    /*
+     * Stores config for the button.
+     */
+    readonly options: ButtonConfig;
+    /*
+     * init
+     */
+    ngOnInit(): void;
+}
+
+```
 
 ## License
 
