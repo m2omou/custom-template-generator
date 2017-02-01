@@ -9,6 +9,6 @@
     "lodash": "^2.4.1",
     "path-complete-extname": "^0.1.0",
     "underscore.string": "^2.3.3",
-    "custom-template-generator": "0.0.3"
+    "custom-template-generator": "0.0.4"
   }
 }
