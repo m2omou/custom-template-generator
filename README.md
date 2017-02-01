@@ -69,9 +69,17 @@ Name               | Description
 name               | Component name
 Name               | capitalized component name
 
-### Example
+### Demo
 
-The following template:
+In this repository, use the `demo` folder to test the generator. Here is the folder hierarchy:
+
+<p align="center">
+  <img src="https://github.com/m2omou/custom-template-generator/raw/master/demo/demo.png" alt="" />
+</p>
+
+To help customized the file name `{component}` will be replace by the componentName defined in the generator parameters. 
+
+The following template `{component}.interface.ts`:
 
 ```javascript
 // Angular imports
