@@ -7,7 +7,7 @@ var _s = require('underscore.string');
 var inquirer = require('inquirer');
 var mkdirp = require('mkdirp');
 var _ = require('lodash');
-
+var beautify = require('js-beautify').js_beautify;
 
 module.exports = function (options) {
     var files = [];
@@ -94,7 +94,14 @@ module.exports = function (options) {
                     injectedData = _.extend(options.data, injectedData);
                 }
 
-                fs.writeFile(dest + templateFilename.replace("{component}", options.componentName), format(data, injectedData), function (err) {
+                var formattedData = format(data, injectedData);
+
+                // will auto indent the whole file
+                if (options.autoIndent === true) {
+                    formattedData = beautify(formattedData);
+                }
+
+                fs.writeFile(dest + templateFilename.replace("{component}", options.componentName), formattedData, function (err) {
                     if (err) { return console.log(err); }
                     console.log('\x1b[32m%s\x1b[0m: ', "Created: " + dest + templateFilename.replace("{component}", options.componentName));
                 });

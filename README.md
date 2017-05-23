@@ -39,6 +39,12 @@ generator({
     customTemplatesUrl: './templates/',
     dest: 'src',
     templateName: 'component'
+    autoIndent: true,
+    data: {
+        someStaticData: {},
+        size: 42,
+        desc: 'this button can talk'
+    }
 });
 ```
 
@@ -52,6 +58,8 @@ componentName          | `string`  | Name of the component
 customTemplatesUrl     | `string`  | Location of the custom templates folder
 dest                   | `string`  | Destination of generated templates files
 templateName           | `string`  | Template name
+autoIndent             | `boolean`  | Default set to false, will indent the whole file
+data                    | `object` | This custom meta data can be injected in the custom template using '{}'
 
 
 ### Meta data
