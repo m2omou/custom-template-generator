@@ -28,6 +28,7 @@ export class {Name}Component<T> implements OnInit, {Name}Interface<T> {
     private _options: {Name}Config;
 
     constructor(private _elementRef: ElementRef, private _renderer: Renderer) {
+        let test = {uiconfig};
     }
 
     /*

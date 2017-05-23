@@ -1,5 +1,4 @@
 var generator = require('custom-template-generator');
-var beautify = require('js-beautify').js_beautify;
 
 generator({
     componentName: "button",

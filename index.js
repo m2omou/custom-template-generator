@@ -81,7 +81,7 @@ module.exports = function (options) {
             if (err) throw err;
             var templateFilename = absoluteTemplatePath.replace(templateAbsolutePath + "/", "");
             var templatePathWithoutFileName = templateFilename.substring(0, templateFilename.lastIndexOf("/"));
-
+            var fileExt = templateFilename ? templateFilename.split('.').pop() : '';
 
             mkdirp(dest + templatePathWithoutFileName, function () {
                 var injectedData = {
@@ -97,7 +97,7 @@ module.exports = function (options) {
                 var formattedData = format(data, injectedData);
 
                 // will auto indent the whole file
-                if (options.autoIndent === true) {
+                if (options.autoIndent === true && (fileExt === 'js' || fileExt === 'ts')) {
                     formattedData = beautify(formattedData);
                 }
 
