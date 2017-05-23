@@ -84,10 +84,17 @@ module.exports = function (options) {
 
 
             mkdirp(dest + templatePathWithoutFileName, function () {
-                fs.writeFile(dest + templateFilename.replace("{component}", options.componentName), format(data, {
+                var injectedData = {
                     name: options.componentName,
                     Name: _s.classify(options.componentName)
-                }), function (err) {
+                };
+
+                // Inject the data defined through the options.
+                if (options.data) {
+                    injectedData = _.extend(options.data, injectedData);
+                }
+
+                fs.writeFile(dest + templateFilename.replace("{component}", options.componentName), format(data, injectedData), function (err) {
                     if (err) { return console.log(err); }
                     console.log('\x1b[32m%s\x1b[0m: ', "Created: " + dest + templateFilename.replace("{component}", options.componentName));
                 });

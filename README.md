@@ -38,7 +38,7 @@ generator({
     componentName: "button",
     customTemplatesUrl: './templates/',
     dest: 'src',
-    componentType: 'component'
+    templateName: 'component'
 });
 ```
 

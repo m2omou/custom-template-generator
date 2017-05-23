@@ -1,6 +1,6 @@
 {
   "name": "custom-template-generator",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "generate file template",
   "main": "index.js",
   "engines": {
