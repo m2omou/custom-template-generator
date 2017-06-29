@@ -59,6 +59,7 @@ customTemplatesUrl     | `string`  | Location of the custom templates folder
 dest                   | `string`  | Destination of generated templates files
 templateName           | `string`  | Template name
 autoIndent             | `boolean`  | Default set to false, will indent the whole file. Only works with js and ts files.
+autoIndentExtensions   | `array`    | The list of extensions file to indent. Default ['js', 'ts']
 data                    | `object` | This custom meta data can be injected in the custom template using '{}'
 
 

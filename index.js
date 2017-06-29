@@ -97,7 +97,7 @@ module.exports = function (options) {
                 var formattedData = format(data, injectedData);
 
                 // will auto indent the whole file
-                if (options.autoIndent === true && (fileExt === 'js' || fileExt === 'ts')) {
+                if (options.autoIndent === true &&  options.autoIndentExtensions.includes(fileExt)) {
                     formattedData = beautify(formattedData);
                 }
 
@@ -116,7 +116,8 @@ module.exports = function (options) {
     function init() {
         var defaultOptions = {
             showPrompt: true,
-            wrapInFolder: true
+            wrapInFolder: true,
+            autoIndentExtensions: ['js', 'ts']
         }
         options = _.extend(defaultOptions, options);
     }
