@@ -86,7 +86,9 @@ module.exports = function (options) {
             mkdirp(dest + templatePathWithoutFileName, function () {
                 var injectedData = {
                     name: options.componentName,
-                    Name: _s.classify(options.componentName)
+                    Name: _s.classify(options.componentName),
+                    Name_: _.snakeCase(options.componentName).toUpperCase(),
+                    name_: _.snakeCase(options.componentName)
                 };
 
                 // Inject the data defined through the options.
