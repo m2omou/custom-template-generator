@@ -99,7 +99,7 @@ module.exports = function (options) {
                 var formattedData = format(data, injectedData);
 
                 // will auto indent the whole file
-                if (options.autoIndent === true &&  options.autoIndentExtensions.includes(fileExt)) {
+                if (options.autoIndent === true &&  _.includes(options.autoIndentExtensions, fileExt)) {
                     formattedData = beautify(formattedData);
                 }
 
