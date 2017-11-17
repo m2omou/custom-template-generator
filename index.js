@@ -80,7 +80,8 @@ module.exports = function (options) {
         fs.readFile(absoluteTemplatePath, 'utf8', function(err, data) {
             if (err) throw err;
             var templateFilename = absoluteTemplatePath.replace(templateAbsolutePath + path.sep, "");
-            var templatePathWithoutFileName = templateFilename.substring(0, templateFilename.lastIndexOf(path.sep));
+            var templatePathWithoutFileName = templateFilename.substring(0, templateFilename.lastIndexOf(path.sep))
+                                                              .replace(/{component}/g, options.componentName);
             var fileExt = templateFilename ? templateFilename.split('.').pop() : '';
 
             mkdirp(dest + templatePathWithoutFileName, function () {
@@ -103,9 +104,9 @@ module.exports = function (options) {
                     formattedData = beautify(formattedData);
                 }
 
-                fs.writeFile(dest + templateFilename.replace("{component}", options.componentName), formattedData, function (err) {
+                fs.writeFile(dest + templateFilename.replace(/{component}/g, options.componentName), formattedData, function (err) {
                     if (err) { return console.log(err); }
-                    console.log('\x1b[32m%s\x1b[0m: ', "Created: " + dest + templateFilename.replace("{component}", options.componentName));
+                    console.log('\x1b[32m%s\x1b[0m: ', "Created: " + dest + templateFilename.replace(/{component}/g, options.componentName));
                 });
             });
         });
