@@ -53,7 +53,7 @@ module.exports = function (options) {
         var files = fs.readdirSync(dir);
 
         for (var i in files) {
-            var name = dir + '/' + files[i];
+            var name = dir + path.sep + files[i];
             if (fs.statSync(name).isDirectory()){
                 getFiles(name, files_);
             } else {
@@ -70,17 +70,18 @@ module.exports = function (options) {
      */
     function generateTemplate(templatePath) {
         var absoluteTemplatePath = path.resolve(templatePath);
-        var dest = options.wrapInFolder ? options.componentName + "/" : "";
+        var dest = options.wrapInFolder ? options.componentName + path.sep : "";
 
         // check if the file need a specific location
         if (options.dest) {
-            dest = options.dest + "/" + dest;
+            dest = options.dest + path.sep + dest;
         }
 
         fs.readFile(absoluteTemplatePath, 'utf8', function(err, data) {
             if (err) throw err;
-            var templateFilename = absoluteTemplatePath.replace(templateAbsolutePath + "/", "");
-            var templatePathWithoutFileName = templateFilename.substring(0, templateFilename.lastIndexOf("/"));
+            var templateFilename = absoluteTemplatePath.replace(templateAbsolutePath + path.sep, "");
+            var templatePathWithoutFileName = templateFilename.substring(0, templateFilename.lastIndexOf(path.sep))
+                                                              .replace(/{component}/g, options.componentName);
             var fileExt = templateFilename ? templateFilename.split('.').pop() : '';
 
             mkdirp(dest + templatePathWithoutFileName, function () {
@@ -103,9 +104,9 @@ module.exports = function (options) {
                     formattedData = beautify(formattedData);
                 }
 
-                fs.writeFile(dest + templateFilename.replace("{component}", options.componentName), formattedData, function (err) {
+                fs.writeFile(dest + templateFilename.replace(/{component}/g, options.componentName), formattedData, function (err) {
                     if (err) { return console.log(err); }
-                    console.log('\x1b[32m%s\x1b[0m: ', "Created: " + dest + templateFilename.replace("{component}", options.componentName));
+                    console.log('\x1b[32m%s\x1b[0m: ', "Created: " + dest + templateFilename.replace(/{component}/g, options.componentName));
                 });
             });
         });
